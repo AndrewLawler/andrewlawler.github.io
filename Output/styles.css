@@ -1,0 +1,224 @@
+/* MARK: - General */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(38,38,38);
+    font-family: Helvetica, Arial;
+    text-align: center;
+}
+
+.wrapper {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    text-align: left;
+}
+
+/* MARK: - Header */
+
+header {
+    background-color: rgba(45,127,227,1); /* For browsers that do not support gradients */
+    background-image: linear-gradient(rgba(45,127,227,0.85), rgba(45,127,227,1));
+    margin-bottom: 10px;
+}
+
+header .circular-portrait {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+header .circular-portrait img {
+    width: 100%;
+    height: auto;
+}
+
+header .wrapper {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: center;
+}
+
+header a {
+    text-decoration: none;
+}
+
+header .site-name {
+    font-size: 2.5em;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 10px;
+}
+
+header .site-description a {
+    text-decoration: underline;
+}
+
+header .site-description {
+    font-size: 1em;
+    color: #ffffff;
+    padding: 10px;
+}
+
+/* MARK: - Nav Bar */
+
+nav {
+    margin-top: 20px;
+}
+
+nav li {
+    display: inline-block;
+    margin: 0 7px;
+    line-height: 1.5em;
+    color: #fff
+}
+
+nav li a.selected {
+    text-decoration: underline;
+}
+
+/* MARK: - Generic Elements */
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+h2 {
+    margin: 20px 0;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+a {
+    color: inherit;
+}
+
+.description {
+    margin-bottom: 40px;
+}
+
+.content {
+    margin-bottom: 40px;
+    color: #fff;
+}
+
+.browse-all {
+    display: block;
+    margin-bottom: 30px;
+}
+
+footer {
+    padding-top: 10px;
+    color: #8a8a8a;
+}
+
+/* MARK: - Page Section Header */
+
+.section-title {
+    color: #fff
+}
+
+/* MARK: - Item List */
+
+.item-list > li {
+    color: #fff;
+    display: block;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: rgb(17, 17, 17);
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.item-list > li:last-child {
+    margin-bottom: 0;
+}
+
+.item-list h1 {
+    margin-bottom: 15px;
+    font-size: 1.3em;
+    color: #fff
+}
+
+/* MARK: - Tag List */
+
+.tag-list {
+    margin-bottom: 15px;
+}
+
+.tag-list li, .tag {
+    display: inline-block;
+    color: #fff;
+}
+
+.tag-list a, .tag a {
+    text-decoration: none;
+}
+
+.tag-list p, .tag a {
+    text-decoration: none;
+}
+
+.item-page .tag-list {
+    display: inline-block;
+}
+
+.all-tags li {
+    font-size: 1.4em;
+    margin-right: 10px;
+    padding: 6px 10px;
+}
+
+/* MARK: - Article */
+
+.article-tag-and-date {
+    display: flex;
+}
+
+.article-tag-and-date .tag-swiftui {
+    background-color: #3193f5;
+    padding: 4px 6px;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.article-tag-and-date .tag-uikit {
+    background-color: #CD69C1;
+    padding: 4px 6px;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.article-tag-and-date .tag-conference {
+    background-color: #D70040;
+    padding: 4px 6px;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.article-tag-and-date p {
+    color: #BBBBBB;
+}
+
+/* MARK: - Media Query */
+
+@media(max-width: 600px) {
+    .wrapper {
+        padding: 40px 20px;
+    }
+}
+
+.recent-articles-header {
+    color: #fff
+}
