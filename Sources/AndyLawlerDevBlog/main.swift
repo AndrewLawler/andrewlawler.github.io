@@ -23,5 +23,6 @@ try AndyLawlerDevBlog().publish(using: [
     .copyResources(),
     .generateHTML(withTheme: .general),
     .generateRSSFeed(including: [.articles]),
-    .generateSiteMap()
+    .generateSiteMap(),
+    .deploy(using: .gitHub("andrewlawler/andrewlawler.github.io"))
 ])
