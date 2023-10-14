@@ -8,7 +8,7 @@
 
 body {
     background-color: rgb(38,38,38);
-    font-family: Helvetica, Arial;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     text-align: center;
 }
 
@@ -16,15 +16,16 @@ body {
     max-width: 900px;
     margin-left: auto;
     margin-right: auto;
-    padding: 20px;
+    padding: 10px;
+    padding-top: 15px;
     text-align: left;
 }
 
 /* MARK: - Header */
 
 header {
-    background-color: rgba(45,127,227,1); /* For browsers that do not support gradients */
-    background-image: linear-gradient(rgba(45,127,227,0.85), rgba(45,127,227,1));
+    background-color: rgba(45,127,227,0.5); /* For browsers that do not support gradients */
+    background-image: linear-gradient(rgba(26,26,26,0.85), rgba(26,26,26,1));
     margin-bottom: 10px;
 }
 
@@ -82,13 +83,14 @@ nav li {
 }
 
 nav li a.selected {
-    text-decoration: underline;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: rgba(45,127,227,0.20);
 }
 
 /* MARK: - Generic Elements */
 
 h1 {
-    margin-bottom: 20px;
     font-size: 2em;
 }
 
@@ -119,8 +121,13 @@ a {
 }
 
 footer {
-    padding-top: 10px;
+    margin-top: 30px;
+    margin-bottom: 0px;
+    padding-bottom: 10px;
+    padding-top: 20px;
     color: #8a8a8a;
+    background-color: rgba(26,26,26,1); /* For browsers that do not support gradients */
+    background-image: linear-gradient(rgba(26,26,26,0.85), rgba(26,26,26,1));
 }
 
 /* MARK: - Page Section Header */
@@ -130,6 +137,10 @@ footer {
 }
 
 /* MARK: - Item List */
+
+.item-list a {
+    text-decoration: none;
+}
 
 .item-list > li {
     color: #fff;
@@ -146,20 +157,25 @@ footer {
 }
 
 .item-list h1 {
-    margin-bottom: 15px;
     font-size: 1.3em;
-    color: #fff
+    color: #fff;
+}
+
+.item-list p {
+    padding-top: 5px;
+    color: lightgray;
 }
 
 /* MARK: - Tag List */
 
 .tag-list {
+    display: flex;
+    align-items: center;
     margin-bottom: 15px;
 }
 
 .tag-list li, .tag {
     display: inline-block;
-    color: #fff;
 }
 
 .tag-list a, .tag a {
@@ -207,18 +223,45 @@ footer {
     margin-right: 5px;
 }
 
+.article-tag-and-date .tag-ios {
+    background-color: #7d34eb;
+    padding: 4px 6px;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.article-tag-and-date .tag-swift {
+    background-color: #eb411e;
+    padding: 4px 6px;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
 .article-tag-and-date p {
-    color: #BBBBBB;
+    color: inherit;
+}
+
+.article-tag-and-date a {
+    color: inherit;
 }
 
 /* MARK: - Media Query */
 
 @media(max-width: 600px) {
     .wrapper {
-        padding: 40px 20px;
+        padding: 30px;
     }
 }
 
 .recent-articles-header {
     color: #fff
+}
+
+article .name-and-date {
+    display: flex;
+    align-items: center;
+}
+
+.title-padding {
+    padding-bottom: 30px;
 }
