@@ -24,5 +24,5 @@ try AndyLawlerDevBlog().publish(using: [
     .generateHTML(withTheme: .general),
     .generateRSSFeed(including: [.articles]),
     .generateSiteMap(),
-    .deploy(using: .gitHub("andrewlawler/andrewlawler.github.io", useSSH: false))
+    .deploy(using: .gitHub("andrewlawler/andrewlawler.github.io", branch: "main", useSSH: false))
 ])
