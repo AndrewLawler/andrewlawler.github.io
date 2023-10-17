@@ -119,6 +119,9 @@ a {
 
 .content {
     margin-bottom: 40px;
+}
+
+p.article-body {
     color: #fff;
 }
 
@@ -205,64 +208,43 @@ footer {
 
 /* MARK: - Article */
 
-.article-tag-and-date {
+.tags {
     display: flex;
 }
 
-.article-tag-and-date .tag-swiftui {
+.tags .tag-swiftui {
     background-color: #3193f5;
     padding: 4px 6px;
     border-radius: 5px;
     margin-right: 5px;
 }
 
-.article-tag-and-date .tag-uikit {
+.tags .tag-uikit {
     background-color: #CD69C1;
     padding: 4px 6px;
     border-radius: 5px;
     margin-right: 5px;
 }
 
-.article-tag-and-date .tag-conference {
+.tags .tag-conference {
     background-color: #D70040;
     padding: 4px 6px;
     border-radius: 5px;
     margin-right: 5px;
 }
 
-.article-tag-and-date .tag-ios {
+.tags .tag-ios {
     background-color: #7d34eb;
     padding: 4px 6px;
     border-radius: 5px;
     margin-right: 5px;
 }
 
-.article-tag-and-date .tag-swift {
+.tags .tag-swift {
     background-color: #eb411e;
     padding: 4px 6px;
     border-radius: 5px;
     margin-right: 5px;
-}
-
-.article-tag-and-date p {
-    color: inherit;
-}
-
-.article-tag-and-date a {
-    color: inherit;
-}
-
-.article-body h3 {
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-
-.article-body img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-    padding: 10px;
 }
 
 /* MARK: - Media Query */
@@ -282,6 +264,50 @@ article .name-and-date {
     align-items: center;
 }
 
-.title-padding {
-    padding-bottom: 30px;
+article h1 {
+    color: #7CB9E8;
+}
+
+article .tag-list {
+    color: white;
+}
+
+article h2 {
+    color: #7CB9E8;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+article h3 {
+    color: #7CB9E8;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+article p {
+    color: white;
+    line-height: 1.75em;
+}
+
+article img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    border-radius: 25px;
+}
+
+article .article-info {
+    display: flex;
+}
+
+article .article-info p {
+    color: lightgrey;
+}
+
+article .article-info .article-info-divider {
+    padding-left: 10px;
+    padding-right: 10px;
 }
