@@ -80,7 +80,7 @@ nav li {
     margin: 0 7px;
     line-height: 1.5em;
     color: #eee;
-    background-color: rgba(45,127,227,0.0);
+    background-color: rgba(124,185,232,0.0);
 }
 
 nav li a.deselected {
@@ -91,8 +91,7 @@ nav li a.deselected {
 nav li a.selected {
     padding: 10px;
     border-radius: 8px;
-    background-color: rgba(45,127,227,0.20);
-
+    background-color: rgba(124,185,232,0.2);
 }
 
 /* MARK: - Generic Elements */
@@ -242,6 +241,13 @@ footer {
 
 .tags .tag-swift {
     background-color: #eb411e;
+    padding: 4px 6px;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.tags .tag-general {
+    background-color: #6BB324;
     padding: 4px 6px;
     border-radius: 5px;
     margin-right: 5px;
