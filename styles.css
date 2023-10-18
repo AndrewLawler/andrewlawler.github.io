@@ -291,7 +291,7 @@ article img {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 70%;
     margin-top: 20px;
     margin-bottom: 25px;
     border-radius: 25px;
@@ -318,5 +318,15 @@ article .article-info .article-info-divider {
         padding-bottom: 10px;
         padding-left: 20px;
         padding-right: 20px;
+    }
+
+    article img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+        margin-top: 20px;
+        margin-bottom: 25px;
+        border-radius: 25px;
     }
 }
