@@ -247,14 +247,6 @@ footer {
     margin-right: 5px;
 }
 
-/* MARK: - Media Query */
-
-@media(max-width: 600px) {
-    .wrapper {
-        padding: 30px;
-    }
-}
-
 .recent-articles-header {
     color: #fff
 }
@@ -310,4 +302,15 @@ article .article-info p {
 article .article-info .article-info-divider {
     padding-left: 10px;
     padding-right: 10px;
+}
+
+/* MARK: - Media Query */
+
+@media(max-width: 600px) {
+    .wrapper {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
 }
