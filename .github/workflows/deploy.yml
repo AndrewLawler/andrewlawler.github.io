@@ -1,0 +1,46 @@
+name: Build and deploy site
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deploy at a time; don't cancel a deploy that's already running.
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    # macOS because Ignite is developed and tested on macOS.
+    # Public repos get these minutes for free.
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build site
+        run: swift run AndyLawlerSite
+
+      - name: Upload site
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: Build
+
+  # Pull requests only check the site builds. Pushes to main also deploy.
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
