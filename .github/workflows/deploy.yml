@@ -18,9 +18,9 @@ concurrency:
 
 jobs:
   build:
-    # macOS because Ignite is developed and tested on macOS.
-    # Public repos get these minutes for free.
-    runs-on: macos-15
+    # macOS because Ignite is developed and tested on macOS. macos-26 has
+    # Xcode 26 (Swift 6.2). Public repos get these minutes for free.
+    runs-on: macos-26
     steps:
       - uses: actions/checkout@v4
 
