@@ -26,7 +26,7 @@ struct Apps: StaticPage {
             WorkAppCard(
                 name: "Sky Bet",
                 icon: "trophy",
-                role: "iOS Engineer, then Senior",
+                role: "iOS Engineer, then Senior iOS Engineer",
                 dates: "Jun 2022 to Sep 2025",
                 url: "https://apps.apple.com/gb/app/id428237841"
             )
