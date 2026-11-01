@@ -22,7 +22,7 @@ struct Home: StaticPage {
                 }
                 .font(.title1)
 
-                Text("I'm an iOS engineer, currently working at Depop and based in Liverpool. I write about Swift, SwiftUI, conferences and building my own apps in public.")
+                Text("I'm an iOS engineer, currently working at Depop and based in Liverpool. I write about all things mobile: Swift, SwiftUI, AI, conferences and building my own apps in public.")
                     .font(.lead)
                     .margin(.bottom, 0)
             }
