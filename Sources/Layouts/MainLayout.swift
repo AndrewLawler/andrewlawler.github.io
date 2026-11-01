@@ -3,6 +3,11 @@ import Ignite
 
 struct MainLayout: Layout {
     var body: some Document {
+        Head {
+            MetaLink(href: "/css/site.css", rel: .stylesheet)
+            MetaLink(href: "/images/apple-touch-icon.png", rel: "apple-touch-icon")
+        }
+
         Body {
             NavigationBar(logo: Span("Andy Lawler").fontWeight(.bold)) {
                 Link("Posts", target: Posts())
@@ -17,6 +22,10 @@ struct MainLayout: Layout {
                 .padding(.top, 100)
 
             SiteFooter()
+
+            // Slides cards and timeline steps into view as you scroll, on every page.
+            // Without JavaScript, or with reduce motion on, they just show.
+            Include("reveal.html")
         }
     }
 }
@@ -34,8 +43,6 @@ struct SiteFooter: HTML {
             Link("GitHub", target: "https://github.com/AndrewLawler")
             " · "
             Link("LinkedIn", target: "https://www.linkedin.com/in/andrewlawler-io/")
-            " · "
-            Link("Mastodon", target: "https://mastodon.social/@andylawlerdev")
         }
         .horizontalAlignment(.center)
         .font(.small)

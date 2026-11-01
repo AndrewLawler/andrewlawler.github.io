@@ -11,21 +11,25 @@ struct Posts: StaticPage {
             .font(.title1)
             .margin(.bottom, .large)
 
-        ForEach(Article.posts(from: articles)) { post in
-            PostRow(article: post)
-        }
+        Include("post-search.html")
+
+        TagFilter(articles: Article.posts(from: articles))
+
+        PostGrid(articles: Article.posts(from: articles))
     }
 }
 
 /// The page for each tag at `/tags/<tag>`, plus the all-tags page at `/tags`.
 struct TagListing: TagPage {
+    @Environment(\.articles) var articles
+
     var body: some HTML {
         Text(tag.name == "All Tags" ? "All posts" : "Posts tagged “\(tag.name)”")
             .font(.title1)
             .margin(.bottom, .large)
 
-        ForEach(tag.articles.sorted { $0.date > $1.date }) { post in
-            PostRow(article: post)
-        }
+        TagFilter(articles: Article.posts(from: articles), selected: tag.name == "All Tags" ? nil : tag.name)
+
+        PostGrid(articles: tag.articles.sorted { $0.date > $1.date })
     }
 }
