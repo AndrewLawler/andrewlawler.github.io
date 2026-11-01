@@ -1,0 +1,29 @@
+<div class="post-search">
+    <label for="post-search-input" class="visually-hidden">Search posts</label>
+    <input id="post-search-input" class="form-control" type="search" placeholder="Search posts" autocomplete="off">
+    <p id="post-search-empty" class="post-search-empty" hidden>No posts match that search.</p>
+</div>
+<script>
+(function () {
+    var input = document.getElementById("post-search-input");
+    var empty = document.getElementById("post-search-empty");
+    if (!input) return;
+
+    // Filters the cards by their text (date, tags, title and description).
+    function filter() {
+        var words = input.value.toLowerCase().split(/\s+/).filter(Boolean);
+        var anyVisible = false;
+
+        document.querySelectorAll(".post-card").forEach(function (card) {
+            var text = card.textContent.toLowerCase();
+            var match = words.every(function (word) { return text.indexOf(word) !== -1; });
+            card.hidden = !match;
+            if (match) anyVisible = true;
+        });
+
+        empty.hidden = anyVisible;
+    }
+
+    input.addEventListener("input", filter);
+})();
+</script>

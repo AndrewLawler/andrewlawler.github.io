@@ -1,0 +1,718 @@
+/* Site styles on top of Ignite's Bootstrap. Colours come from Bootstrap's
+   variables so light and dark mode follow the theme automatically. */
+
+/* iOS system colours: systemPink comes from the theme as --bs-primary,
+   systemBlue is used for tags. */
+:root {
+    --site-blue: #007AFF;
+    --site-pink-pressed: #D30F45;
+}
+
+[data-bs-theme*="dark"] {
+    --site-blue: #0A84FF;
+    --site-pink-pressed: #FF6482;
+}
+
+/* Buttons. Ignite sets button backgrounds and link colours directly, so these
+   rules set the colours directly too, with enough specificity to win. */
+a.btn.btn-primary,
+a.btn.btn-primary:visited {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+    color: #fff;
+    font-weight: 600;
+}
+
+a.btn.btn-primary:hover,
+a.btn.btn-primary:focus-visible,
+a.btn.btn-primary:active {
+    background-color: var(--site-pink-pressed);
+    border-color: var(--site-pink-pressed);
+    color: #fff;
+}
+
+a.btn.btn-secondary,
+a.btn.btn-secondary:visited {
+    background-color: transparent;
+    border: 2px solid var(--bs-primary);
+    color: var(--bs-primary);
+    font-weight: 600;
+}
+
+a.btn.btn-secondary:hover,
+a.btn.btn-secondary:focus-visible,
+a.btn.btn-secondary:active {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+    color: #fff;
+}
+
+/* Same border width on both, so the two buttons are the same height. */
+a.btn {
+    text-decoration: none;
+    border-width: 2px;
+}
+
+/* Hero */
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+    margin-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+    .hero {
+        flex-direction: row;
+        align-items: center;
+        gap: 2.5rem;
+    }
+}
+
+.hero-photo {
+    width: 140px;
+    height: 140px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 0 4px var(--bs-body-bg), 0 0 0 6px var(--bs-primary);
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.75rem;
+}
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1.75rem;
+}
+
+/* Post cards: the newest one spans the full width, the rest sit two across. */
+.post-grid + .post-grid {
+    margin-top: -1rem;
+}
+
+.post-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+    .post-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .post-grid:not(.post-grid-compact) > .post-card:first-child {
+        grid-column: 1 / -1;
+    }
+}
+
+.post-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--bs-border-color-translucent);
+    border-radius: 1rem;
+    overflow: hidden;
+    background: var(--bs-body-bg);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.post-card:hover,
+.post-card:focus-within {
+    transform: translateY(-3px);
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.12);
+}
+
+.post-card:focus-within {
+    outline: 2px solid var(--bs-primary);
+    outline-offset: 2px;
+}
+
+.post-card-image {
+    width: 100%;
+    aspect-ratio: 2000 / 840;
+    object-fit: cover;
+    background: var(--bs-tertiary-bg);
+}
+
+.post-card-body {
+    padding: 1.5rem 1.75rem 1.75rem;
+}
+
+.post-card-meta {
+    font-size: 0.85rem;
+    color: var(--bs-secondary-color);
+    margin-bottom: 0.4rem;
+}
+
+.post-card-date {
+    font-weight: 500;
+    color: var(--bs-secondary-color);
+    opacity: 0.8;
+}
+
+/* Tags sit above the card's stretched link so they can be tapped on their own. */
+.post-card-tag {
+    position: relative;
+    z-index: 2;
+    margin-left: 0.4rem;
+    color: var(--site-blue);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.post-card-tag:hover {
+    text-decoration: underline;
+    color: var(--site-blue);
+}
+
+.post-card-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.post-card-title a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.post-card-title a:focus {
+    outline: none;
+}
+
+.post-card:hover .post-card-title a {
+    color: var(--bs-link-color);
+}
+
+.post-card-description {
+    margin-bottom: 0;
+    color: var(--bs-secondary-color);
+}
+
+/* Post search */
+.post-search {
+    margin-bottom: 1.25rem;
+}
+
+.post-search input {
+    border-radius: 999px;
+    padding: 0.6rem 1.1rem;
+}
+
+.post-search input:focus {
+    border-color: var(--bs-primary);
+    box-shadow: 0 0 0 0.2rem rgba(var(--bs-primary-rgb), 0.2);
+}
+
+.post-search-empty {
+    margin-top: 1rem;
+    color: var(--bs-secondary-color);
+}
+
+.post-card[hidden] {
+    display: none;
+}
+
+/* "Get to know me" cards on the home page: three across, stacked on phones. */
+.explore-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+    .explore-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.explore-card {
+    padding: 1.5rem;
+}
+
+.explore-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: rgba(var(--bs-primary-rgb), 0.12);
+    color: var(--bs-primary);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.explore-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.35rem;
+}
+
+.explore-title a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.explore-title a::after {
+    content: " →";
+    color: var(--bs-primary);
+}
+
+.explore-title a:focus {
+    outline: none;
+}
+
+.explore-card:hover .explore-title a {
+    color: var(--bs-link-color);
+}
+
+.explore-text {
+    margin-bottom: 0;
+    color: var(--bs-secondary-color);
+    font-size: 0.95rem;
+}
+
+/* Tag filter pills */
+.tag-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.tag-pill {
+    padding: 0.3rem 0.85rem;
+    border: 1px solid var(--bs-border-color);
+    border-radius: 999px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: var(--bs-body-color);
+}
+
+.tag-pill:hover {
+    border-color: var(--bs-primary);
+    color: var(--bs-primary);
+}
+
+.tag-pill.active {
+    background: var(--bs-primary);
+    border-color: var(--bs-primary);
+    color: #fff;
+}
+
+/* Apps */
+.app-icon {
+    width: 88px;
+    height: 88px;
+    flex-shrink: 0;
+    border-radius: 22.5%;
+    border: 1px solid var(--bs-border-color-translucent);
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.15);
+}
+
+.app-icon-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #F07A8C, #C9374F);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+}
+
+.app-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+}
+
+.app-header h1,
+.app-header h2,
+.app-header p {
+    margin-bottom: 0.25rem;
+}
+
+.app-card .post-card-body {
+    padding: 1.5rem;
+}
+
+.app-card-image {
+    width: 100%;
+    aspect-ratio: 2000 / 840;
+    object-fit: cover;
+    border-top: 1px solid var(--bs-border-color-translucent);
+}
+
+/* Company apps: tappable cards, three across on wide screens. */
+.work-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-bottom: 3.5rem;
+}
+
+@media (min-width: 768px) {
+    .work-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.work-card {
+    padding: 1.5rem;
+}
+
+.work-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 22.5%;
+    background: rgba(var(--bs-primary-rgb), 0.12);
+    color: var(--bs-primary);
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.work-card .work-name {
+    font-size: 1.2rem;
+    margin-bottom: 0.25rem;
+}
+
+.work-role {
+    font-weight: 500;
+    margin-bottom: 0.1rem;
+}
+
+.work-dates {
+    font-size: 0.85rem;
+    color: var(--bs-secondary-color);
+    margin-bottom: 0;
+}
+
+/* Pinned to the bottom, so the cards line up whatever the role length. */
+.work-store {
+    margin: auto 0 0;
+    padding-top: 1rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--bs-secondary-color);
+}
+
+.work-card:hover .work-store {
+    color: var(--bs-link-color);
+}
+
+.badge-soon {
+    display: inline-block;
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: var(--bs-tertiary-bg);
+    color: var(--bs-secondary-color);
+}
+
+.screenshots {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.screenshots img {
+    width: 100%;
+    border-radius: 1rem;
+    border: 1px solid var(--bs-border-color-translucent);
+}
+
+/* About page segmented control, styled like an iOS segmented picker. */
+.segmented {
+    display: flex;
+    gap: 0.25rem;
+    padding: 0.25rem;
+    margin-bottom: 2rem;
+    border-radius: 0.85rem;
+    background: var(--bs-tertiary-bg);
+    border: 1px solid var(--bs-border-color-translucent);
+}
+
+.segmented[hidden],
+.segment-panel[hidden] {
+    display: none;
+}
+
+.segmented button {
+    flex: 1;
+    padding: 0.55rem 0.75rem;
+    border: none;
+    border-radius: 0.65rem;
+    background: transparent;
+    color: var(--bs-secondary-color);
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.segmented button:hover {
+    color: var(--bs-body-color);
+}
+
+.segmented button[aria-selected="true"] {
+    background: var(--bs-body-bg);
+    color: var(--bs-body-color);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.segmented button:focus-visible {
+    outline: 2px solid var(--bs-primary);
+    outline-offset: 2px;
+}
+
+.segment-panel {
+    min-height: 8rem;
+}
+
+/* About page timeline: a line down the left with an icon marker per step. Jobs
+   have pink outlined markers, milestones grey ones, and the current role is filled in. */
+.timeline {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.timeline-step {
+    position: relative;
+    padding-left: 3.5rem;
+    padding-bottom: 2.25rem;
+}
+
+.timeline-step::before {
+    content: "";
+    position: absolute;
+    left: 19px;
+    top: 2.5rem;
+    bottom: 0.25rem;
+    width: 2px;
+    background: var(--bs-border-color);
+}
+
+.timeline-step:last-child::before {
+    display: none;
+}
+
+.timeline-icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 2px solid var(--bs-primary);
+    background: var(--bs-body-bg);
+    color: var(--bs-primary);
+    font-size: 1.1rem;
+}
+
+.timeline-milestone .timeline-icon {
+    border-color: var(--bs-border-color);
+    background: var(--bs-tertiary-bg);
+    color: var(--bs-secondary-color);
+}
+
+.timeline-current .timeline-icon {
+    background: var(--bs-primary);
+    color: #fff;
+    box-shadow: 0 0 0 5px rgba(var(--bs-primary-rgb), 0.2);
+}
+
+.timeline-date,
+.timeline-title,
+.timeline-place {
+    line-height: 1.35;
+}
+
+/* App Store chip on a job step, for the company's app. */
+.timeline-app {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.75rem;
+    padding: 0.3rem 0.8rem;
+    border: 1px solid var(--bs-border-color);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--bs-body-color);
+    text-decoration: none;
+}
+
+.timeline-app:hover {
+    border-color: var(--bs-primary);
+    color: var(--bs-primary);
+}
+
+/* The date row is as tall as the icon, so the date sits level with it. */
+.timeline-date {
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--bs-secondary-color);
+    margin-bottom: 0.15rem;
+}
+
+.timeline-now {
+    padding: 0.05rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: var(--bs-primary);
+    color: #fff;
+}
+
+.timeline-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.timeline-place {
+    color: var(--bs-secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.timeline-milestone .timeline-title {
+    font-size: 1rem;
+}
+
+.timeline-text {
+    margin-bottom: 0;
+}
+
+/* Homepage motion. All of it is switched off for reduced motion below. */
+.hero {
+    animation: hero-in 0.6s ease-out both;
+}
+
+@keyframes hero-in {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: none; }
+}
+
+.hero-photo-wrap {
+    position: relative;
+    flex-shrink: 0;
+}
+
+/* A soft pink glow behind the photo that slowly breathes. */
+.hero-photo-wrap::before {
+    content: "";
+    position: absolute;
+    inset: -18px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(var(--bs-primary-rgb), 0.35), transparent 70%);
+    z-index: -1;
+    animation: glow 4s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% { transform: scale(0.95); opacity: 0.7; }
+    50% { transform: scale(1.08); opacity: 1; }
+}
+
+.wave {
+    display: inline-block;
+    transform-origin: 70% 70%;
+    animation: wave 1.8s ease-in-out 0.6s 1;
+}
+
+@keyframes wave {
+    0%, 60%, 100% { transform: rotate(0); }
+    10%, 30% { transform: rotate(14deg); }
+    20% { transform: rotate(-8deg); }
+    40% { transform: rotate(-4deg); }
+    50% { transform: rotate(10deg); }
+}
+
+/* Cards and timeline steps slide up as they scroll into view, on every page
+   (the class is added by reveal.html). */
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.15s ease;
+}
+
+.reveal.revealed {
+    opacity: 1;
+    transform: none;
+}
+
+.post-card.reveal.revealed:hover,
+.post-card.reveal.revealed:focus-within {
+    transform: translateY(-3px);
+}
+
+/* Cover images zoom a little on hover. */
+.post-card-image,
+.app-card-image {
+    transition: transform 0.4s ease;
+}
+
+.post-card:hover .post-card-image,
+.post-card:hover .app-card-image {
+    transform: scale(1.03);
+}
+
+.explore-icon {
+    transition: transform 0.2s ease;
+}
+
+.explore-card:hover .explore-icon {
+    transform: rotate(-6deg) scale(1.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .post-card,
+    .post-card-image,
+    .app-card-image,
+    .explore-icon {
+        transition: none;
+    }
+
+    .hero,
+    .wave,
+    .hero-photo-wrap::before {
+        animation: none;
+    }
+
+    .post-card:hover .post-card-image,
+    .post-card:hover .app-card-image,
+    .explore-card:hover .explore-icon {
+        transform: none;
+    }
+
+    .post-card:hover,
+    .post-card:focus-within {
+        transform: none;
+    }
+}

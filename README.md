@@ -4,9 +4,10 @@ My personal site: blog posts, my apps, and their privacy and support pages. It's
 
 ## Layout
 
-- `Sources/`: the site in Swift. `Site.swift` is the entry point. `Pages/` holds the static pages (home, posts, about, apps, Second Skin privacy and support) and `Layouts/` holds the page chrome and the post layout.
+- `Sources/`: the site in Swift. `Site.swift` is the entry point. `Pages/` holds the static pages (home, posts, about, apps, Second Skin privacy and support), `Layouts/` holds the page chrome and the post layout, and `Components/` holds the post cards, card grid and tag filter. `Theme.swift` sets the accent (iOS systemPink).
 - `Content/posts/`: the posts, as Markdown. Don't edit these here; they're imported from the vault (see below).
-- `Assets/`: images and the favicon, copied as-is to the site root.
+- `Assets/`: images, the favicon and `css/site.css` (the site's own styles on top of Ignite's Bootstrap), copied as-is to the site root. App icons and banners for the Apps page are in `images/apps/`.
+- `Includes/`: raw HTML snippets pulled into pages with `Include(...)`: the post search, the About page tabs and the scroll-in animation.
 - `scripts/import-posts.py`: copies published posts from the Obsidian vault into `Content/posts/` and `Assets/images/posts/`.
 - `Build/`: the generated site (ignored by git).
 
@@ -25,7 +26,7 @@ swift run AndyLawlerSite
 python3 -m http.server 8000 --directory Build
 ```
 
-Then open <http://localhost:8000>. (Or install the Ignite CLI with `brew tap ignite-swift/ignite && brew install ignite-swift` and run `ignite run --preview`.)
+Then open <http://localhost:8000>. Re-run `swift run AndyLawlerSite` after each change and refresh. If a build fails with duplicate symbols or "resource fork, Finder information, or similar detritus not allowed", iCloud has been copying files in `.build`: run `swift package reset` and build again. (Or install the Ignite CLI with `brew tap ignite-swift/ignite && brew install ignite-swift` and run `ignite run --preview`.)
 
 ## Deploying
 

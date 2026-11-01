@@ -39,4 +39,9 @@ extension Article {
     static func posts(from loader: ArticleLoader) -> [Article] {
         loader.typed("posts").sorted { $0.date > $1.date }
     }
+
+    /// Posts from before the blog came back in 2026 (the 2020 dev.to posts).
+    var isOlderPost: Bool {
+        Calendar.current.component(.year, from: date) < 2026
+    }
 }

@@ -1,0 +1,23 @@
+<script>
+(function () {
+    // Respect "reduce motion", and skip browsers without IntersectionObserver.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!("IntersectionObserver" in window)) return;
+
+    var cards = document.querySelectorAll(".explore-card, .post-grid .post-card, .work-card, .timeline-step");
+    var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("revealed");
+            observer.unobserve(entry.target);
+        });
+    }, { rootMargin: "0px 0px -10% 0px" });
+
+    cards.forEach(function (card, index) {
+        card.classList.add("reveal");
+        // Stagger cards that appear together.
+        card.style.transitionDelay = (index % 3) * 80 + "ms";
+        observer.observe(card);
+    });
+})();
+</script>
