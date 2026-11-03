@@ -65,7 +65,7 @@ struct Home: StaticPage {
         }
         .class("section-title")
 
-        PostGrid(articles: Array(Article.posts(from: articles).filter { !$0.isOlderPost }.prefix(5)))
+        PostGrid(articles: Array(Article.posts(from: articles).filter { !$0.isOlderPost }.prefix(3)))
     }
 }
 
