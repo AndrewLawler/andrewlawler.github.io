@@ -13,6 +13,18 @@
     --site-pink-pressed: #FF6482;
 }
 
+/* Bootstrap only lightens the navbar burger icon under data-bs-theme="dark",
+   but Ignite's dark theme is "site-dark-dark", so the icon stays dark grey on
+   a dark background. Set the light icon and border for any dark theme. */
+[data-bs-theme*="dark"] .navbar {
+    --bs-navbar-toggler-border-color: rgba(255, 255, 255, 0.25);
+    --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+[data-bs-theme*="dark"] .navbar-toggler-icon {
+    --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
 /* Buttons. Ignite sets button backgrounds and link colours directly, so these
    rules set the colours directly too, with enough specificity to win. */
 a.btn.btn-primary,
