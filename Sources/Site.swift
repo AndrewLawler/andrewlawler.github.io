@@ -35,6 +35,10 @@ struct AndyLawlerSite: Site {
 
     var feedConfiguration: FeedConfiguration? = FeedConfiguration(mode: .full, contentCount: 20)
 
+    // Ignite only loads Prism for languages it finds in CodeBlock elements, and
+    // fenced code in Markdown posts doesn't count, so list the languages here.
+    var syntaxHighlighterConfiguration = SyntaxHighlighterConfiguration(languages: [.swift, .yaml, .bash])
+
     var staticPages: [any StaticPage] {
         Posts()
         About()
