@@ -46,8 +46,8 @@ def parse_front_matter(text):
     return fields, text[match.end():]
 
 
-def devto_dates():
-    """Map each dev.to post title to its publish date (YYYY-MM-DD)."""
+def devto_posts():
+    """Map each dev.to post title to its publish date (YYYY-MM-DD) and URL."""
     url = f"https://dev.to/api/articles?username={DEVTO_USERNAME}&per_page=100"
     try:
         # dev.to rejects Python's default user agent as a bot.
@@ -55,9 +55,9 @@ def devto_dates():
         with urllib.request.urlopen(request, timeout=20) as response:
             articles = json.load(response)
     except Exception as error:  # Network problems shouldn't stop an import.
-        print(f"warning: couldn't fetch dev.to dates ({error})", file=sys.stderr)
+        print(f"warning: couldn't fetch dev.to posts ({error})", file=sys.stderr)
         return {}
-    return {article["title"]: article["published_at"][:10] for article in articles}
+    return {article["title"]: (article["published_at"][:10], article["url"]) for article in articles}
 
 
 def main():
@@ -69,7 +69,7 @@ def main():
     args = parser.parse_args()
 
     manual_dates = dict(item.split("=", 1) for item in args.date)
-    published_dates = devto_dates()
+    devto = devto_posts()
     content_dir = SITE_ROOT / "Content/posts"
     assets_dir = SITE_ROOT / "Assets/images/posts"
     content_dir.mkdir(parents=True, exist_ok=True)
@@ -85,7 +85,8 @@ def main():
             continue
 
         title = fields.get("title", slug)
-        date = manual_dates.get(slug) or published_dates.get(title)
+        devto_date, devto_url = devto.get(title, (None, None))
+        date = manual_dates.get(slug) or devto_date
         if not date:
             print(f"skip   {stem} (no date: not found on dev.to, pass --date {slug}=YYYY-MM-DD)")
             continue
@@ -112,6 +113,8 @@ def main():
             f"description: {fields.get('description', '')}",
             f"tags: {fields.get('tags', '')}",
         ]
+        if devto_url:
+            front_matter.append(f"devto: {devto_url}")
         if fields.get("series"):
             front_matter.append(f"series: {fields['series']}")
         if cover:

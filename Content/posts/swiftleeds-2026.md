@@ -3,6 +3,7 @@ title: Back after 6 years: my SwiftLeeds 2026 best bits 🎤
 date: 2026-10-17
 description: Where I've been for the last six years, and my highlights from my sixth SwiftLeeds, from SwiftUI's TextRenderer to building an audience for your apps.
 tags: swift, ios, career, techtalks
+devto: https://dev.to/andylawler/back-after-6-years-my-swiftleeds-2026-best-bits-2687
 image: https://andrewlawler.github.io/images/posts/swiftleeds-2026/cover.jpg
 alt: Cover image for Back after 6 years: my SwiftLeeds 2026 best bits 🎤
 ---

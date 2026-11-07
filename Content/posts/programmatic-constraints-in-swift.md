@@ -3,6 +3,7 @@ title: Programmatic Constraints in Swift 📏
 date: 2020-02-20
 description: Learn how to use programmatic constraints in Swift the way apple intended.
 tags: swift, appdevelopment, ios, programming
+devto: https://dev.to/andylawler/programmatic-constraints-in-swift-kj
 ---
 
 Have you always wanted to learn how to constrain your views and elements in Swift programatically and want to use no-libraries, well you are in the best place. This method of writing constraints is quite tedious in comparison to the likes of SnapKit but you will learn the fundamentals of constraints and then you can apply this knowledge to libraries like SnapKit in the future.
