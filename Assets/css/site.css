@@ -171,20 +171,7 @@ a.btn {
     opacity: 0.8;
 }
 
-/* Tags sit above the card's stretched link so they can be tapped on their own. */
-.post-card-tag {
-    position: relative;
-    z-index: 2;
-    margin-left: 0.4rem;
-    color: var(--bs-primary);
-    text-decoration: none;
-    font-weight: 500;
-}
 
-.post-card-tag:hover {
-    text-decoration: underline;
-    color: var(--site-pink-pressed);
-}
 
 .post-card-title {
     font-size: 1.3rem;
@@ -303,25 +290,8 @@ a.btn {
     margin-bottom: 2rem;
 }
 
-.tag-pill {
-    padding: 0.3rem 0.85rem;
-    border: 1px solid var(--bs-border-color);
-    border-radius: 999px;
-    font-size: 0.9rem;
-    text-decoration: none;
-    color: var(--bs-body-color);
-}
 
-.tag-pill:hover {
-    border-color: var(--bs-primary);
-    color: var(--bs-primary);
-}
 
-.tag-pill.active {
-    background: var(--bs-primary);
-    border-color: var(--bs-primary);
-    color: #fff;
-}
 
 /* Apps */
 .app-icon {
@@ -858,7 +828,18 @@ main pre code {
     gap: 0.5rem;
 }
 
-/* Tags as chips. */
+
+@media (max-width: 575.98px) {
+    .post-header-body {
+        padding: 1.25rem 1.25rem 1.1rem;
+    }
+}
+
+/* Tags, everywhere they appear (post cards, the posts filter and the post
+   header), share one chip: grey at rest, a pink tint on hover, solid pink
+   when it's the selected filter. */
+.post-card-tag,
+.tag-pill,
 .post-header-tag {
     display: inline-block;
     padding: 0.3rem 0.8rem;
@@ -873,6 +854,10 @@ main pre code {
     transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 
+.post-card-tag:hover,
+.post-card-tag:focus-visible,
+.tag-pill:hover,
+.tag-pill:focus-visible,
 .post-header-tag:hover,
 .post-header-tag:focus-visible {
     background: rgba(var(--bs-primary-rgb), 0.1);
@@ -880,8 +865,30 @@ main pre code {
     color: var(--bs-primary);
 }
 
-@media (max-width: 575.98px) {
-    .post-header-body {
-        padding: 1.25rem 1.25rem 1.1rem;
-    }
+.tag-pill.active,
+.tag-pill.active:hover {
+    background: var(--bs-primary);
+    border-color: var(--bs-primary);
+    color: #fff;
+}
+
+/* On cards the chips are a little smaller, and sit above the card's stretched
+   link so they can be tapped on their own. */
+.post-card-tag {
+    position: relative;
+    z-index: 2;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.75rem;
+}
+
+.post-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.post-card-date,
+.post-card-part {
+    margin-right: 0.2rem;
 }
