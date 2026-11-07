@@ -6,6 +6,12 @@ struct PostLayout: ArticlePage {
     @Environment(\.articles) var articles
 
     var body: some HTML {
+        // Decorative: the title right under it says the same thing.
+        if let image = article.image {
+            Image(decorative: PostCard.sitePath(image))
+                .class("post-cover")
+        }
+
         Text(article.title)
             .font(.title1)
             .margin(.bottom, .small)
