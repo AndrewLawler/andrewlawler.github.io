@@ -4,7 +4,9 @@ import Ignite
 struct MainLayout: Layout {
     var body: some Document {
         Head {
-            MetaLink(href: "/css/site.css", rel: .stylesheet)
+            // The build time in the URL makes browsers fetch the new CSS after each
+            // deploy, instead of using a cached copy for up to 10 minutes.
+            MetaLink(href: "/css/site.css?v=\(Self.buildVersion)", rel: .stylesheet)
             MetaLink(href: "/images/apple-touch-icon.png", rel: "apple-touch-icon")
         }
 
@@ -53,4 +55,9 @@ struct SiteFooter: HTML {
             .foregroundStyle(.secondary)
             .margin(.bottom, .xLarge)
     }
+}
+
+extension MainLayout {
+    /// Set once per build.
+    static let buildVersion = String(Int(Date().timeIntervalSince1970))
 }
