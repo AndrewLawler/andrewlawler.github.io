@@ -53,7 +53,7 @@ struct PostCard: HTML {
     }
 
     private var date: String {
-        article.date.formatted(date: .abbreviated, time: .omitted)
+        article.date.formatted(.dateTime.day().month(.abbreviated).year().locale(.ukEnglish))
     }
 
     /// Post front matter holds full image URLs (dev.to needs them). Use the path
@@ -110,4 +110,9 @@ struct TagFilter: HTML {
             .class(isActive ? "active" : "")
             .aria(.current, isActive ? "page" : nil)
     }
+}
+
+extension Locale {
+    /// Dates read the British way ("7 November 2026"), whatever machine builds the site.
+    static let ukEnglish = Locale(identifier: "en_GB")
 }

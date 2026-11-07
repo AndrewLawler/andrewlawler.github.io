@@ -83,7 +83,7 @@ struct PostHeader: HTML {
     }
 
     private var meta: String {
-        "Posted on \(article.date.formatted(date: .long, time: .omitted)) · \(article.estimatedReadingMinutes) min read"
+        "Posted on \(article.date.formatted(.dateTime.day().month(.wide).year().locale(.ukEnglish))) · \(article.estimatedReadingMinutes) min read"
     }
 }
 
