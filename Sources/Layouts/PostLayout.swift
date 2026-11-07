@@ -28,7 +28,7 @@ struct PostLayout: ArticlePage {
 }
 
 /// The top of a post, laid out like dev.to's: the cover across the top of a
-/// card, then who wrote it and when, the title and the tags.
+/// card, then when it was posted, the title and the tags.
 struct PostHeader: HTML {
     var article: Article
 
@@ -41,29 +41,18 @@ struct PostHeader: HTML {
             }
 
             Section {
-                Section {
-                    Image(decorative: "/images/avatar.png")
-                        .class("post-author-avatar")
-
-                    Section {
-                        Text("Andy Lawler")
-                            .class("post-author-name")
-
-                        if let devto = article.devtoURL {
-                            Text {
-                                meta
-                                " · "
-                                Link("Also on dev.to", target: devto)
-                                    .target(.newWindow)
-                            }
-                            .class("post-author-meta")
-                        } else {
-                            Text(meta)
-                                .class("post-author-meta")
-                        }
+                if let devto = article.devtoURL {
+                    Text {
+                        meta
+                        " · "
+                        Link("Also on dev.to", target: devto)
+                            .target(.newWindow)
                     }
+                    .class("post-header-meta")
+                } else {
+                    Text(meta)
+                        .class("post-header-meta")
                 }
-                .class("post-author")
 
                 Text(article.title)
                     .font(.title1)

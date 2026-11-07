@@ -760,7 +760,7 @@ main pre code {
 }
 
 /* The top of a post, laid out like dev.to: the cover across the top of a
-   card, then the author row, the title and the tags. */
+   card, then the date line, the title and the tags. */
 .post-header {
     border: 1px solid var(--bs-border-color-translucent);
     border-radius: 1rem;
@@ -781,36 +781,17 @@ main pre code {
     padding: 1.75rem 2rem 1.5rem;
 }
 
-.post-author {
-    display: flex;
-    align-items: center;
-    gap: 0.85rem;
-    margin-bottom: 1.25rem;
-}
-
-.post-author-avatar {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    flex-shrink: 0;
-}
-
-.post-author-name {
-    font-weight: 600;
-    margin-bottom: 0;
-}
-
-.post-author-meta {
+.post-header-meta {
     font-size: 0.9rem;
     color: var(--bs-secondary-color);
-    margin-bottom: 0;
+    margin-bottom: 0.75rem;
 }
 
-.post-author-meta a {
+.post-header-meta a {
     text-decoration: none;
 }
 
-.post-author-meta a:hover {
+.post-header-meta a:hover {
     text-decoration: underline;
 }
 
