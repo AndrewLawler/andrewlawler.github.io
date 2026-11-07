@@ -3,6 +3,7 @@ title: Building Second Skin in public: an app for your tattoos 🌹
 date: 2026-10-31
 description: The first post in a series on building Second Skin, my SwiftUI app for keeping track of your tattoos, from the idea all the way to the App Store.
 tags: buildinpublic, ios, mobile, showdev
+series: Building Second Skin
 image: https://andrewlawler.github.io/images/posts/building-second-skin/cover.jpg
 alt: Cover image for Building Second Skin in public: an app for your tattoos 🌹
 ---

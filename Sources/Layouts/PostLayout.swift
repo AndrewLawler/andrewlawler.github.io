@@ -3,6 +3,8 @@ import Ignite
 
 /// The layout for every Markdown post in `Content/posts/`.
 struct PostLayout: ArticlePage {
+    @Environment(\.articles) var articles
+
     var body: some HTML {
         Text(article.title)
             .font(.title1)
@@ -22,6 +24,10 @@ struct PostLayout: ArticlePage {
                 }
             }
             .margin(.bottom, .large)
+        }
+
+        if let series = Series.named(article.seriesName) {
+            SeriesBox(article: article, series: series, posts: series.posts(from: articles))
         }
 
         Text(article.text)

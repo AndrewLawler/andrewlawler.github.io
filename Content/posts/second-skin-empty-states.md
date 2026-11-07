@@ -3,6 +3,7 @@ title: Building Second Skin in public #2: empty states and the first photos 📸
 date: 2026-11-07
 description: Part two of building Second Skin, my SwiftUI tattoo app. A detour into the design system, an empty state for every tab, and the first photos going into the app.
 tags: buildinpublic, ios, mobile, showdev
+series: Building Second Skin
 image: https://andrewlawler.github.io/images/posts/second-skin-empty-states/cover.jpg
 alt: Cover image for Building Second Skin in public #2: empty states and the first photos 📸
 ---

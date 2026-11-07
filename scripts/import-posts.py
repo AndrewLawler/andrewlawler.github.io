@@ -97,7 +97,8 @@ def main():
             image_target = assets_dir / slug
             if image_target.exists():
                 shutil.rmtree(image_target)
-            shutil.copytree(image_source, image_target)
+            # cover.png is only for uploading to dev.to; the site uses cover.jpg.
+            shutil.copytree(image_source, image_target, ignore=shutil.ignore_patterns("cover.png"))
             if (image_target / "cover.jpg").exists():
                 # Absolute, because Ignite uses it as-is for og:image and
                 # social previews need a full URL.
@@ -111,6 +112,8 @@ def main():
             f"description: {fields.get('description', '')}",
             f"tags: {fields.get('tags', '')}",
         ]
+        if fields.get("series"):
+            front_matter.append(f"series: {fields['series']}")
         if cover:
             front_matter += [f"image: {cover}", f"alt: Cover image for {title}"]
         front_matter.append("---")
