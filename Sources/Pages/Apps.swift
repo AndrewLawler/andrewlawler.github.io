@@ -227,6 +227,8 @@ struct SecondSkin: StaticPage {
     var path = "/apps/second-skin"
     var description = "Second Skin is an iOS app for keeping track of your tattoos, from idea to healed."
 
+    @Environment(\.articles) var articles
+
     var body: some HTML {
         Section {
             AppIcon(image: nil, name: "Second Skin")
@@ -257,7 +259,15 @@ struct SecondSkin: StaticPage {
         }
         .class("screenshots")
 
-        Text(markdown: "I'm building it in public. You can follow along in the [Building Second Skin](/posts/building-second-skin/) series.")
+        if let series = Series.named("Building Second Skin") {
+            Section {
+                AppSectionTitle("📝 Building in public", subtitle: "I'm writing up how the build is going as I go. Here's every part so far, starting from the beginning.")
+
+                PostGrid(articles: series.posts(from: articles), isCompact: true, isNumbered: true)
+            }
+            .id("building-in-public")
+            .margin(.top, .xLarge)
+        }
 
     }
 }

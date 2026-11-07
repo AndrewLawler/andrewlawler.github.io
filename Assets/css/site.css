@@ -747,3 +747,128 @@ main pre code {
     font-size: inherit;
     white-space: pre;
 }
+
+/* Series: the box at the top of a post in a series, and the part label on
+   the cards on the series page. */
+.series-box {
+    border: 1px solid var(--bs-border-color-translucent);
+    border-left: 4px solid var(--bs-primary);
+    border-radius: 0.75rem;
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+    background: var(--bs-tertiary-bg);
+}
+
+.series-box-title {
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+}
+
+.series-box-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+    font-size: 0.9rem;
+}
+
+.series-box-links a {
+    text-decoration: none;
+}
+
+.series-box-links a:hover {
+    text-decoration: underline;
+}
+
+.series-box-next {
+    margin-left: auto;
+}
+
+.post-card-part {
+    color: var(--bs-primary);
+    font-weight: 600;
+    margin-right: 0.4rem;
+}
+
+/* The top of a post, laid out like dev.to: the cover across the top of a
+   card, then the author row, the title and the tags. */
+.post-header {
+    border: 1px solid var(--bs-border-color-translucent);
+    border-radius: 1rem;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    background: var(--bs-body-bg);
+}
+
+.post-header-cover {
+    display: block;
+    width: 100%;
+    aspect-ratio: 2000 / 840;
+    object-fit: cover;
+    background: var(--bs-tertiary-bg);
+}
+
+.post-header-body {
+    padding: 1.75rem 2rem 1.5rem;
+}
+
+.post-author {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 1.25rem;
+}
+
+.post-author-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.post-author-name {
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.post-author-meta {
+    font-size: 0.9rem;
+    color: var(--bs-secondary-color);
+    margin-bottom: 0;
+}
+
+.post-author-meta a {
+    text-decoration: none;
+}
+
+.post-author-meta a:hover {
+    text-decoration: underline;
+}
+
+.post-header-title {
+    font-weight: 800;
+    font-size: clamp(1.9rem, 5vw, 2.8rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+}
+
+.post-header-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+}
+
+.post-header-tag {
+    color: var(--bs-secondary-color);
+    text-decoration: none;
+}
+
+.post-header-tag:hover {
+    color: var(--bs-primary);
+}
+
+@media (max-width: 575.98px) {
+    .post-header-body {
+        padding: 1.25rem 1.25rem 1.1rem;
+    }
+}

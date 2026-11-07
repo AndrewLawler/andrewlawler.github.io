@@ -3,6 +3,7 @@ title: Once an AI novice, now maybe a little less of one ✨
 date: 2026-10-26
 description: Where I started with AI, the mistakes I made, and why it doesn't have to be scary, even if knowing your stuff is your superpower.
 tags: ai, productivity, ios, mobile
+devto: https://dev.to/andylawler/once-an-ai-novice-now-maybe-a-little-less-of-one-lpo
 image: https://andrewlawler.github.io/images/posts/once-an-ai-novice/cover.jpg
 alt: Cover image for Once an AI novice, now maybe a little less of one ✨
 ---

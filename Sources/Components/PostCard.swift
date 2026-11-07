@@ -6,6 +6,8 @@ import Ignite
 /// apart from the tags, which open their tag page.
 struct PostCard: HTML {
     var article: Article
+    /// The part number, on a series page.
+    var part: Int? = nil
 
     var body: some HTML {
         Section {
@@ -16,6 +18,11 @@ struct PostCard: HTML {
 
             Section {
                 Section {
+                    if let part {
+                        Span("Part \(part)")
+                            .class("post-card-part")
+                    }
+
                     Span(date)
                         .class("post-card-date")
 
@@ -61,11 +68,13 @@ struct PostGrid: HTML {
     var articles: [Article]
     /// Two across with no full-width first card, for the older posts.
     var isCompact = false
+    /// Label each card "Part 1", "Part 2" and so on, for a series.
+    var isNumbered = false
 
     var body: some HTML {
         Section {
-            ForEach(articles) { post in
-                PostCard(article: post)
+            ForEach(Array(articles.enumerated())) { item in
+                PostCard(article: item.element, part: isNumbered ? item.offset + 1 : nil)
             }
         }
         .class("post-grid", isCompact ? "post-grid-compact" : "")

@@ -3,6 +3,7 @@ title: Introduction to Swift! 🚀 (for complete beginners)
 date: 2020-02-26
 description: Basic introduction to programming in Swift. Great for new users who want to understand the basics and get started. 😀
 tags: ios, swift
+devto: https://dev.to/andylawler/introduction-to-swift-for-complete-beginners-c07
 ---
 
 ## So you want to get started with swift but don't know where to start? 🤔

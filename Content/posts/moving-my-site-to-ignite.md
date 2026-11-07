@@ -3,6 +3,7 @@ title: My blog is moving home: rebuilding my site in Swift with Ignite 🏡
 date: 2026-11-03
 description: Why I moved my personal site from Publish to Ignite, how it's all built in Swift and deployed for free with GitHub Actions, and where my posts will live from now on.
 tags: swift, ios, webdev, showdev
+devto: https://dev.to/andylawler/my-blog-is-moving-home-rebuilding-my-site-in-swift-with-ignite-3j7i
 image: https://andrewlawler.github.io/images/posts/moving-my-site-to-ignite/cover.jpg
 alt: Cover image for My blog is moving home: rebuilding my site in Swift with Ignite 🏡
 ---
